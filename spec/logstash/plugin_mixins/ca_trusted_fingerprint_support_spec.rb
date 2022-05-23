@@ -33,7 +33,7 @@ describe LogStash::PluginMixins::CATrustedFingerprintSupport do
       LogStash::Outputs::Base
     ].each do |base_class|
       context "that inherits from `#{base_class}`" do
-        native_support_for_plugin_factory = defined?(::LogStash::Plugins::CATrustedFingerprintSupport)
+        native_support_for_plugin_factory = Gem::Version.create(LOGSTASH_VERSION) >= Gem::Version.create("8.3.0")
 
         let(:plugin_base_class) { base_class }
 
